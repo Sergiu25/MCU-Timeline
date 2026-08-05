@@ -1,34 +1,34 @@
 # Marvel Watchlist
 
-Aplicație web locală pentru urmărirea filmelor și serialelor Marvel în ordinea recomandată de vizionare.
+A local web application for tracking Marvel movies and series in the recommended viewing order.
 
-Proiectul conține trei liste:
+The project contains three main lists:
 
 - **MCU Timeline**
 - **X-Men Universe**
 - **Spider-Man Universes**
 
-Utilizatorul poate marca producțiile vizionate, poate urmări progresul separat pentru fiecare listă și poate alege între tema luminoasă și tema întunecată.
+Users can mark productions as watched, track progress separately for each list, and switch between light and dark themes.
 
-## Funcționalități
+## Features
 
-- liste ordonate de filme, seriale, sezoane, speciale și scurtmetraje;
-- afișarea anului, tipului, universului și importanței fiecărei producții;
-- trei niveluri de importanță: `Esențial`, `Recomandat` și `Opțional`;
-- progres calculat separat pentru fiecare univers;
-- checkbox pentru marcarea producțiilor vizionate;
-- sincronizarea automată a producțiilor care apar în mai multe liste;
-- producțiile viitoare apar în lista lor, dar nu pot fi bifate;
-- temă light/dark cu switch glisant;
-- salvarea locală a progresului și a temei.
+- Ordered lists of movies, animated movies, series, seasons, specials, and shorts
+- Release year, production type, universe, and importance displayed for each item
+- Three importance levels: `Essential`, `Recommended`, and `Optional`
+- Progress calculated separately for each universe
+- Checkboxes for marking productions as watched
+- Automatic synchronization for productions that appear in multiple lists
+- Upcoming productions displayed in their corresponding lists with disabled checkboxes
+- Light and dark themes with a sliding toggle
+- Local persistence for viewing progress and theme preference
 
-## Cum funcționează sincronizarea
+## How synchronization works
 
-Fiecare producție are un `id` unic. Atunci când aceeași producție apare în mai multe liste, aceasta folosește același ID peste tot.
+Every production has a unique `id`. When the same production appears in multiple lists, it uses the same ID everywhere.
 
-De exemplu, `Deadpool & Wolverine` apare atât în MCU Timeline, cât și în X-Men Universe. Dacă filmul este bifat într-o listă, el va apărea bifat automat și în cealaltă.
+For example, `Deadpool & Wolverine` appears in both the MCU Timeline and the X-Men Universe. Marking it as watched in one list automatically marks it as watched in the other.
 
-Listele nu sunt scrise direct în componente. Datele sunt păstrate separat în:
+The lists are not written directly inside the React components. Their data is stored separately in:
 
 ```text
 src/data/mcu.ts
@@ -36,135 +36,135 @@ src/data/xmen.ts
 src/data/spiderman.ts
 ```
 
-Structura unui element este definită în `src/types/watchItem.ts`.
+The data structure for each item is defined in `src/types/watchItem.ts`.
 
-## Salvarea datelor
+## Data persistence
 
-Aplicația nu folosește backend, bază de date sau conturi de utilizator. Datele sunt salvate în `localStorage`, direct în browser.
+The application does not use a backend, database, or user accounts. All data is stored directly in the browser through `localStorage`.
 
-Sunt folosite următoarele chei:
+The following keys are used:
 
-- `marvel-watchlist:watched` — lista ID-urilor marcate ca vizionate;
-- `marvel-watchlist:theme` — tema selectată (`light` sau `dark`).
+- `marvel-watchlist:watched` — IDs of productions marked as watched
+- `marvel-watchlist:theme` — selected theme (`light` or `dark`)
 
-Datele rămân salvate după închiderea și repornirea aplicației, atât timp cât:
+The data remains available after closing and restarting the application as long as:
 
-- aplicația este deschisă în același browser și același profil;
-- datele site-ului nu sunt șterse;
-- adresa locală folosită pentru aplicație rămâne aceeași.
+- the application is opened in the same browser and browser profile
+- the website data is not cleared
+- the application continues to use the same local address
 
-Ștergerea datelor browserului sau rularea aplicației pe alt port/origine poate crea un spațiu `localStorage` diferit.
+Clearing browser data or running the application on a different port or origin may create a separate `localStorage` area.
 
-Pentru resetarea manuală a progresului, deschide consola browserului și rulează:
+To manually reset viewing progress, open the browser console and run:
 
 ```js
 localStorage.removeItem('marvel-watchlist:watched')
 ```
 
-Pentru resetarea temei:
+To reset the theme preference:
 
 ```js
 localStorage.removeItem('marvel-watchlist:theme')
 ```
 
-Apoi reîncarcă pagina.
+Reload the page afterward.
 
-## Tehnologii
+## Technologies
 
-- React 19;
-- TypeScript;
-- Vite;
-- CSS simplu;
-- Oxlint.
+- React 19
+- TypeScript
+- Vite
+- Plain CSS
+- Oxlint
 
-Nu sunt folosite servicii externe sau biblioteci UI.
+No external services or UI libraries are used.
 
-## Cerințe locale
+## Local requirements
 
-Este necesar să ai instalate:
+The following software must be installed:
 
-- Node.js;
-- npm.
+- Node.js
+- npm
 
-Poți verifica instalarea cu:
+Check the installed versions with:
 
 ```powershell
 node --version
 npm.cmd --version
 ```
 
-Pe Windows este recomandat `npm.cmd`. Acesta funcționează și atunci când politica PowerShell blochează scriptul `npm.ps1`.
+On Windows, using `npm.cmd` is recommended. It also works when the PowerShell execution policy blocks the `npm.ps1` script.
 
-## Instalare
+## Installation
 
-Deschide PowerShell în directorul proiectului:
+Open PowerShell in the project directory:
 
 ```powershell
 cd D:\MCU_Timeline
 npm.cmd install
 ```
 
-Comanda instalează dependențele definite în `package.json`.
+This installs the dependencies declared in `package.json`.
 
-## Pornirea aplicației
+## Running the application
 
-Pentru modul de dezvoltare:
+Start the development server with:
 
 ```powershell
 npm.cmd run dev
 ```
 
-Vite va afișa în terminal adresa locală, de obicei:
+Vite will display the local address in the terminal, usually:
 
 ```text
 http://localhost:5173
 ```
 
-Deschide adresa în browser. Serverul trebuie să rămână pornit în terminal cât timp folosești aplicația.
+Open that address in a browser. The terminal must remain open while using the application.
 
-Pentru oprire, apasă `Ctrl+C` în terminal.
+To stop the development server, press `Ctrl+C` in the terminal.
 
-## Verificarea proiectului
+## Project checks
 
-Verificarea statică a codului:
+Run the static code checks with:
 
 ```powershell
 npm.cmd run lint
 ```
 
-Compilarea locală de verificare:
+Create a local production build with:
 
 ```powershell
 npm.cmd run build
 ```
 
-Build-ul este generat în folderul `dist`. Acesta este doar un rezultat local al compilării și nu publică aplicația pe internet.
+The build is generated in the `dist` directory. This is only a local compilation result and does not publish the application online.
 
-Pentru a verifica local build-ul generat:
+Preview the generated build locally with:
 
 ```powershell
 npm.cmd run preview
 ```
 
-## Structura principală
+## Project structure
 
 ```text
 src/
   components/
-    WatchList.tsx          # afișarea elementelor și checkboxurilor
+    WatchList.tsx          # Item list and checkboxes
   data/
-    mcu.ts                 # datele MCU Timeline
-    xmen.ts                # datele X-Men Universe
-    spiderman.ts           # datele Spider-Man Universes
+    mcu.ts                 # MCU Timeline data
+    xmen.ts                # X-Men Universe data
+    spiderman.ts           # Spider-Man Universes data
   hooks/
-    useWatchedItems.ts     # citirea și salvarea progresului
+    useWatchedItems.ts     # Reading and saving viewing progress
   types/
-    watchItem.ts           # tipurile TypeScript
-  App.tsx                  # navigarea, progresul și tema
-  App.css                  # stilurile componentelor
-  index.css                # stilurile globale și culorile temelor
+    watchItem.ts           # TypeScript data types
+  App.tsx                  # Navigation, progress, and theme control
+  App.css                  # Component styles
+  index.css                # Global styles and theme colors
 ```
 
-## Deploy
+## Deployment
 
-Proiectul este destinat rulării locale. Nu include și nu necesită configurare de deploy, hosting, Docker, backend sau bază de date.
+This project is intended to run locally. It does not include or require deployment, hosting, Docker, a backend, or a database.
