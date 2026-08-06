@@ -21,5 +21,6 @@ export const spidermanTimeline: WatchItem[] = [
   { id: 'venom-the-last-dance', title: 'Venom: The Last Dance', year: 2024, type: 'movie', universe: 'Sony Spider-Man Universe', importance: 'optional', status: 'released' },
   { id: 'kraven-the-hunter', title: 'Kraven the Hunter', year: 2024, type: 'movie', universe: 'Sony Spider-Man Universe', importance: 'optional', status: 'released' },
   { id: 'spider-man-brand-new-day', title: 'Spider-Man: Brand New Day', year: 2026, type: 'movie', universe: 'MCU Spider-Man', importance: 'essential', status: 'released' },
+  { id: 'spider-noir-s1', title: 'Spider-Noir', year: 2026, type: 'season', seasonNumber: 1, universe: 'Spider-Noir Universe', importance: 'recommended', status: 'released' },
   { id: 'spider-man-beyond-the-spider-verse', title: 'Spider-Man: Beyond the Spider-Verse', type: 'animatedMovie', universe: 'Spider-Verse', importance: 'essential', status: 'upcoming', releaseDate: '2027-06-18' },
 ]
