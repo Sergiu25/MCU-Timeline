@@ -1,11 +1,11 @@
 import type { WatchItem } from '../types/watchItem'
 
 export const spidermanTimeline: WatchItem[] = [
-  { id: 'spider-man-2002', title: 'Spider-Man', year: 2002, type: 'movie', universe: 'Univers Sam Raimi', importance: 'essential', status: 'released' },
-  { id: 'spider-man-2', title: 'Spider-Man 2', year: 2004, type: 'movie', universe: 'Univers Sam Raimi', importance: 'essential', status: 'released' },
-  { id: 'spider-man-3', title: 'Spider-Man 3', year: 2007, type: 'movie', universe: 'Univers Sam Raimi', importance: 'recommended', status: 'released' },
-  { id: 'the-amazing-spider-man', title: 'The Amazing Spider-Man', year: 2012, type: 'movie', universe: 'Univers Marc Webb', importance: 'essential', status: 'released' },
-  { id: 'the-amazing-spider-man-2', title: 'The Amazing Spider-Man 2', year: 2014, type: 'movie', universe: 'Univers Marc Webb', importance: 'recommended', status: 'released' },
+  { id: 'spider-man-2002', title: 'Spider-Man', year: 2002, type: 'movie', universe: 'Sam Raimi Universe', importance: 'essential', status: 'released' },
+  { id: 'spider-man-2', title: 'Spider-Man 2', year: 2004, type: 'movie', universe: 'Sam Raimi Universe', importance: 'essential', status: 'released' },
+  { id: 'spider-man-3', title: 'Spider-Man 3', year: 2007, type: 'movie', universe: 'Sam Raimi Universe', importance: 'recommended', status: 'released' },
+  { id: 'the-amazing-spider-man', title: 'The Amazing Spider-Man', year: 2012, type: 'movie', universe: 'Marc Webb Universe', importance: 'essential', status: 'released' },
+  { id: 'the-amazing-spider-man-2', title: 'The Amazing Spider-Man 2', year: 2014, type: 'movie', universe: 'Marc Webb Universe', importance: 'recommended', status: 'released' },
   { id: 'captain-america-civil-war', title: 'Captain America: Civil War', year: 2016, type: 'movie', universe: 'MCU Spider-Man', importance: 'essential', status: 'released' },
   { id: 'spider-man-homecoming', title: 'Spider-Man: Homecoming', year: 2017, type: 'movie', universe: 'MCU Spider-Man', importance: 'essential', status: 'released' },
   { id: 'venom', title: 'Venom', year: 2018, type: 'movie', universe: 'Sony Spider-Man Universe', importance: 'recommended', status: 'released' },
@@ -14,7 +14,7 @@ export const spidermanTimeline: WatchItem[] = [
   { id: 'avengers-endgame', title: 'Avengers: Endgame', year: 2019, type: 'movie', universe: 'MCU Spider-Man', importance: 'essential', status: 'released' },
   { id: 'spider-man-far-from-home', title: 'Spider-Man: Far From Home', year: 2019, type: 'movie', universe: 'MCU Spider-Man', importance: 'essential', status: 'released' },
   { id: 'venom-let-there-be-carnage', title: 'Venom: Let There Be Carnage', year: 2021, type: 'movie', universe: 'Sony Spider-Man Universe', importance: 'recommended', status: 'released' },
-  { id: 'spider-man-no-way-home', title: 'Spider-Man: No Way Home', year: 2021, type: 'movie', universe: 'MCU Spider-Man și Multivers', importance: 'essential', status: 'released' },
+  { id: 'spider-man-no-way-home', title: 'Spider-Man: No Way Home', year: 2021, type: 'movie', universe: 'MCU Spider-Man and Multiverse', importance: 'essential', status: 'released' },
   { id: 'morbius', title: 'Morbius', year: 2022, type: 'movie', universe: 'Sony Spider-Man Universe', importance: 'optional', status: 'released' },
   { id: 'spider-man-across-the-spider-verse', title: 'Spider-Man: Across the Spider-Verse', year: 2023, type: 'animatedMovie', universe: 'Spider-Verse', importance: 'essential', status: 'released' },
   { id: 'madame-web', title: 'Madame Web', year: 2024, type: 'movie', universe: 'Sony Spider-Man Universe', importance: 'optional', status: 'released' },

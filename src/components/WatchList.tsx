@@ -7,21 +7,21 @@ type WatchListProps = {
 }
 
 const typeLabels: Record<WatchItemType, string> = {
-  movie: 'Film',
-  animatedMovie: 'Film animat',
-  series: 'Miniserie',
-  season: 'Serial',
+  movie: 'Movie',
+  animatedMovie: 'Animated movie',
+  series: 'Miniseries',
+  season: 'Series',
   special: 'Special',
-  short: 'Scurtmetraj',
+  short: 'Short',
 }
 
 const importanceLabels: Record<WatchItem['importance'], string> = {
-  essential: 'Esențial',
-  recommended: 'Recomandat',
-  optional: 'Opțional',
+  essential: 'Essential',
+  recommended: 'Recommended',
+  optional: 'Optional',
 }
 
-const dateFormatter = new Intl.DateTimeFormat('ro-RO', {
+const dateFormatter = new Intl.DateTimeFormat('en-GB', {
   day: 'numeric',
   month: 'long',
   year: 'numeric',
@@ -43,7 +43,7 @@ export function WatchList({ items, watchedIds, onToggle }: WatchListProps) {
                 checked={isWatched}
                 disabled={isUpcoming}
                 onChange={() => onToggle(item.id)}
-                aria-label={`Marchează ${item.title} ca vizionat`}
+                aria-label={`Mark ${item.title} as watched`}
               />
             </label>
 
@@ -51,7 +51,7 @@ export function WatchList({ items, watchedIds, onToggle }: WatchListProps) {
               <div className="watch-item__heading">
                 <h2>
                   {item.title}
-                  {item.seasonNumber ? `, Sezonul ${item.seasonNumber}` : ''}
+                  {item.seasonNumber ? `, Season ${item.seasonNumber}` : ''}
                 </h2>
                 <span className={`badge badge--${item.importance}`}>
                   {importanceLabels[item.importance]}
@@ -66,7 +66,7 @@ export function WatchList({ items, watchedIds, onToggle }: WatchListProps) {
                   <span className="upcoming">Upcoming: {dateFormatter.format(new Date(item.releaseDate))}</span>
                 )}
                 {item.timelineStatus === 'unconfirmed' && (
-                  <span>Poziție exactă în timeline neconfirmată</span>
+                  <span>Exact timeline position unconfirmed</span>
                 )}
               </div>
             </div>

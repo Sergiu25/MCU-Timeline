@@ -19,17 +19,17 @@ function readTheme(): Theme {
 const timelines: Record<TimelineId, { title: string; description: string; items: WatchItem[] }> = {
   mcu: {
     title: 'MCU Timeline',
-    description: 'Ordinea recomandată de vizionare pentru filmele și serialele din MCU.',
+    description: 'The recommended viewing order for MCU movies and series.',
     items: mcuTimeline,
   },
   xmen: {
     title: 'X-Men Universe',
-    description: 'Ordinea recomandată de vizionare pentru universul cinematografic X-Men.',
+    description: 'The recommended viewing order for the X-Men cinematic universe.',
     items: xmenTimeline,
   },
   spiderman: {
     title: 'Spider-Man Universes',
-    description: 'Ordinea recomandată de vizionare pentru universurile Spider-Man.',
+    description: 'The recommended viewing order for the Spider-Man universes.',
     items: spidermanTimeline,
   },
 }
@@ -59,7 +59,7 @@ function App() {
             className="theme-toggle"
             type="button"
             aria-pressed={theme === 'dark'}
-            aria-label={`Activează tema ${theme === 'light' ? 'întunecată' : 'luminoasă'}`}
+            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
             onClick={() => setTheme((currentTheme) => currentTheme === 'light' ? 'dark' : 'light')}
           >
             <span className="theme-toggle__track" aria-hidden="true">
@@ -79,7 +79,7 @@ function App() {
         <p>{activeTimeline.description}</p>
       </header>
 
-      <nav className="timeline-nav" aria-label="Selectează universul">
+      <nav className="timeline-nav" aria-label="Select universe">
         <button
           className={activeTimelineId === 'mcu' ? 'timeline-nav__button timeline-nav__button--active' : 'timeline-nav__button'}
           type="button"
@@ -105,8 +105,8 @@ function App() {
 
       <section className="progress" aria-label={`Progres ${activeTimeline.title}`}>
         <div className="progress__text">
-          <strong>{progress}% vizionat</strong>
-          <span>{watchedCount} din {releasedCount}</span>
+          <strong>{progress}% watched</strong>
+          <span>{watchedCount} of {releasedCount}</span>
         </div>
         <progress value={watchedCount} max={releasedCount} />
       </section>
