@@ -142,6 +142,35 @@
   background: #b4232f;
 }
 
+.list-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin: -0.25rem 0 1rem;
+}
+
+.filter-toggle {
+  padding: 0.55rem 0.85rem;
+  border: 1px solid var(--nav-border);
+  border-radius: 0.65rem;
+  color: var(--text);
+  background: var(--surface);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.filter-toggle:hover { border-color: #b4232f; }
+
+.filter-toggle:focus-visible {
+  outline: 3px solid rgb(180 35 47 / 25%);
+  outline-offset: 2px;
+}
+
+.filter-toggle[aria-pressed='true'] {
+  border-color: #b4232f;
+  color: #b4232f;
+  background: var(--surface-muted);
+}
+
 .progress {
   margin-bottom: 1.25rem;
   padding: 1rem 1.25rem;

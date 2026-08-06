@@ -36,6 +36,7 @@ const timelines: Record<TimelineId, { title: string; description: string; items:
 
 function App() {
   const [activeTimelineId, setActiveTimelineId] = useState<TimelineId>('mcu')
+  const [hideOptionalMcuItems, setHideOptionalMcuItems] = useState(false)
   const [theme, setTheme] = useState<Theme>(readTheme)
   const { watchedIds, toggleWatched } = useWatchedItems()
   const activeTimeline = timelines[activeTimelineId]
@@ -44,6 +45,9 @@ function App() {
     (item) => item.status === 'released' && watchedIds.has(item.id),
   ).length
   const progress = releasedCount === 0 ? 0 : Math.round((watchedCount / releasedCount) * 100)
+  const visibleItems = activeTimelineId === 'mcu' && hideOptionalMcuItems
+    ? activeTimeline.items.filter((item) => item.importance !== 'optional')
+    : activeTimeline.items
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
@@ -103,7 +107,20 @@ function App() {
         </button>
       </nav>
 
-      <section className="progress" aria-label={`Progres ${activeTimeline.title}`}>
+      {activeTimelineId === 'mcu' && (
+        <div className="list-controls">
+          <button
+            className="filter-toggle"
+            type="button"
+            aria-pressed={hideOptionalMcuItems}
+            onClick={() => setHideOptionalMcuItems((currentValue) => !currentValue)}
+          >
+            {hideOptionalMcuItems ? 'Show optional' : 'Hide optional'}
+          </button>
+        </div>
+      )}
+
+      <section className="progress" aria-label={`Progress for ${activeTimeline.title}`}>
         <div className="progress__text">
           <strong>{progress}% watched</strong>
           <span>{watchedCount} of {releasedCount}</span>
@@ -111,7 +128,7 @@ function App() {
         <progress value={watchedCount} max={releasedCount} />
       </section>
 
-      <WatchList items={activeTimeline.items} watchedIds={watchedIds} onToggle={toggleWatched} />
+      <WatchList items={visibleItems} watchedIds={watchedIds} onToggle={toggleWatched} />
     </main>
   )
 }
